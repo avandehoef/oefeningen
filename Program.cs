@@ -3,169 +3,87 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Globalization;
 
-namespace ConsoleApp5
+namespace ConsoleApp4
 {
     class Program
     {
         static void Main(string[] args)
         {
+            Console.WindowWidth = 110;
+            Console.WindowHeight = 34;
             Console.BackgroundColor = ConsoleColor.White;
             Console.ForegroundColor = ConsoleColor.Black;
             Console.Clear();
 
-            Console.WriteLine("dit is een oefening in progress");
-            Console.WriteLine();
-            Console.ReadKey();
+            Console.WriteLine("");
+            Console.WriteLine("Met deze toepassing kan de volgende informatie over Fibonacci getallen worden verkregen:");
+            Console.WriteLine("");
+            Console.WriteLine("1) Alle Fibonacci getallen onder een bepaald maximum worden weergegeven; ");
+            Console.WriteLine("2) Het bij elkaar opgetelde totaal van deze getallen wordt weergeven; ");
+            Console.WriteLine("3) Het totaal van zowel de even als de on- even getallen onder het maximum wordt weergegeven;");
+            Console.WriteLine("4) Het (totaal/ even / on- even) aantal Fibonacci getallen onder het maximum wordt weergegeven.");
+            Console.WriteLine("");
+            Console.WriteLine("Geef eerst het gewenste maximum op:");
+            Console.WriteLine("");
 
-            Console.WriteLine("oefening met integeres en strings");
-            int x = 123;
-            string y = "ad";
-            Console.WriteLine(x + x + y);
-            Console.WriteLine(y + x + x);
-            Console.WriteLine();
+            string drukOpToets = ("Druk op een toets om door te gaan...");
+            int aantal = 0, aantalEven = 0, aantalOneven = 0;
+            double maximum1 = Double.Parse(Console.ReadLine());
+            double hoogsteFibonacci = 1, zichZelf = 1, startGetal = 0, opgeteld = 0, opgeteldOneven = 0, opgeteldEven = 0;
+            Console.WriteLine("");
 
-            string z = $"{x} {x} {y}";
-            Console.WriteLine(z);
-
-            string b = "\"hallo \\ \\ \\\\unicode u2022 daar\"";
-            Console.WriteLine(b);
-            Console.ReadKey();
-
-            Console.WriteLine();
-
-            decimal geld = 20.5m;
-            double waarde = 5;
-            decimal ding = geld + (decimal)waarde;
-            Console.WriteLine();
-            Console.WriteLine("decimal en double optellen gaat op deze manier, zie alhier het antwoord: " + ding);
-            Console.ReadKey();
-
-            y = y.ToUpper();
-            Console.WriteLine();
-            Console.WriteLine("omzetten naar een upper, gaat via y = y.ToUpper " + y);
-            Console.ReadKey();
-
-            string naam1 = "adriaan";
-            string naam2 = "wouter";
-
-
-            bool result = (naam1 == naam2);
-            /* bool result2 = (nummer1 < nummer2); */
-
-            Console.WriteLine();
-            Console.WriteLine("Bool vergelijking tussen twee strings");
-            Console.WriteLine(result);
-            Console.WriteLine();
-            Console.ReadKey();
-
-            string naar = x.ToString();
-
-            Console.WriteLine(naar);
-            Console.ReadKey();
-
-            string proberen1 =naam1.ToString();
-
-            Console.WriteLine(proberen1);
-            Console.ReadKey();
-
-            Console.WriteLine("voer alstublieft een bedrag in");
-            decimal prijs = Decimal.Parse(Console.ReadLine());
-
-            CultureInfo culture = CultureInfo.CreateSpecificCulture("nl");
-            NumberFormatInfo format = culture.NumberFormat;
-
-            string bedrag = prijs.ToString("C", format);
-
-            Console.WriteLine(bedrag);
-            Console.ReadKey();
-
-            DateTime tijd = DateTime.Now;
-            Console.WriteLine(tijd);
-            Console.ReadKey();
-
-            var dag = tijd.Day;
-            var dagVanDeWeek = tijd.DayOfWeek;
-            var dagVanHetJaar = tijd.DayOfYear;
-            var tijdVanDeDag = tijd.TimeOfDay;
-            int week = dagVanHetJaar / 7;
-
-            Console.WriteLine();
-            Console.WriteLine(dag);
-            Console.WriteLine(dagVanDeWeek);
-            Console.WriteLine(dagVanHetJaar);
-            Console.WriteLine(tijdVanDeDag);
-            Console.WriteLine();
-            Console.WriteLine("De huidige week is week " + ( week + 1));
-            Console.ReadKey();
-
-            int dd = 1;
-            int bb = 7;
-
-            Console.WriteLine("test met integer gedeeld door integer, wordt inderdaad afgekapt op hele getal, ongeacht het decimale getal (voorbeeld 1/7 (is dus niet 0,14 maar 0)) = " + dd / bb);
-            Console.WriteLine();
-            Console.WriteLine();
-            Console.ReadKey();
-
-            string willekeurigedatum;
-            DateTime rekendatum;
-
-            Console.WriteLine("geef een datum op");
-            willekeurigedatum = Console.ReadLine();
-            rekendatum = Convert.ToDateTime(willekeurigedatum);
-
-            Console.WriteLine("{0}-{1}-{2}", rekendatum.Day, rekendatum.Month, rekendatum.Year);
-
-            DateTime tijd2 = rekendatum;
-            var dagVanWillekeurigJaar = tijd2.DayOfYear;
-            var dagVanWillekeurigeWeek = tijd2.DayOfWeek;
-            int weekVanWilekeurigJaar = dagVanWillekeurigJaar / 7;
-
-            if (rekendatum < DateTime.Today)
+            while (hoogsteFibonacci < maximum1)
             {
-                Console.WriteLine("dit was dag nummer " + dagVanWillekeurigJaar + " van dat jaar en dat was een " + dagVanWillekeurigeWeek + " en dat viel in de volgende week " + (weekVanWilekeurigJaar + 1));
-            }
-            else
-                if (rekendatum == DateTime.Today)
+               
+                Console.WriteLine(hoogsteFibonacci);
+
+                opgeteld += hoogsteFibonacci;
+
+
+                if (hoogsteFibonacci % 2 == 0)
                 {
-                    Console.WriteLine("dat is vandaag ! :)");
+                    opgeteldEven += hoogsteFibonacci;
+                    aantalEven++;
                 }
-            else
-                Console.WriteLine("dit is dag nummer " + dagVanWillekeurigJaar + " van dat jaar en dat is een " + dagVanWillekeurigeWeek + " en dat valt in de volgende week " + (weekVanWilekeurigJaar + 1));
-
+                else
+                {
+                    opgeteldOneven += hoogsteFibonacci;
+                    aantalOneven++;
+                }
+                    aantal++;
+                
+                hoogsteFibonacci = startGetal + zichZelf;
+                startGetal = zichZelf;
+                zichZelf = hoogsteFibonacci;
+                
+            }
+            Console.WriteLine("");
+            Console.WriteLine("1) Dit zijn alle Fibonacci getallen onder het opgegeven maximum van: " + maximum1);
+            Console.WriteLine(drukOpToets);
             Console.ReadKey();
+            Console.WriteLine("");
 
-            Console.WriteLine();
-            Console.WriteLine("geef de eerste waarde op");
-            double xbool1 = Double.Parse(Console.ReadLine());
-            Console.WriteLine();
-
-            Console.WriteLine("geef de tweede waarde op");
-            double xbool2 = Double.Parse(Console.ReadLine());
-            Console.WriteLine();
-
-            bool xboolTest = xbool1 < xbool2;
-            Console.WriteLine("is getal 1 kleiner dan getal 2: " + xboolTest);
+            Console.WriteLine("2) Het opgetelde totaal van alle Fibonacci getallen onder het maximum van " + maximum1 + " is: " + opgeteld);
+            Console.WriteLine(drukOpToets);
             Console.ReadKey();
-            Console.WriteLine();
+            Console.WriteLine("");
 
-            bool xbool3 = true;
-            Console.WriteLine(xbool3);
-            Console.WriteLine();
-            Console.WriteLine("en met een uitroepteken ervoor wordt het als het goed is \"false\" " + !xbool3);
+            Console.WriteLine("3a) Het opgetelde totaal van alle even Fibonacci getallen onder het maximum van " + maximum1 + " is: " + opgeteldEven);
+            Console.WriteLine("3b) Het opgetelde totaal van alle on-even Fibonacci getallen onder het maximum van " + maximum1 + " is: " + opgeteldOneven);
+            Console.WriteLine(drukOpToets);
+            Console.ReadKey();
+            Console.WriteLine("");
+
+            Console.WriteLine("4a) Het aantal Fibonacci getallen onder het maximum van " + maximum1 + " is: " + aantal);
+            Console.WriteLine("4b) Het aantal even Fibonacci getallen onder het maximum van " + maximum1 + " is: " + aantalEven);
+            Console.WriteLine("4c) Het aantal on- even Fibonacci getallen onder het maximum van " + maximum1 + " is: " + aantalOneven);
+            Console.WriteLine("");
+            Console.WriteLine("Druk op een toets om deze berekening af te sluiten...");
+            Console.ReadKey();
             
-            Console.ReadKey();
 
-            bool xbool4 = xboolTest || xbool3;
-            Console.WriteLine();
-            Console.WriteLine("wordt het true of false, ik denk true");
-            Console.WriteLine(xbool4);
-            Console.WriteLine();
-            Console.ReadKey();
-
-
-
+            
         }
     }
 }
