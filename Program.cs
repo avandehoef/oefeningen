@@ -164,53 +164,8 @@ namespace ConsoleApp5
             Console.WriteLine();
             Console.ReadKey();
 
-            int loopcheck = 1;
-            do
-            {
-                Console.WriteLine(loopcheck);
-                loopcheck++;
-            } while (loopcheck < 10);
-
-            Console.WriteLine();
-            Console.WriteLine("en nu de check of de 1 wel wordt opgeschreven omdat de while pas na de writeline komt");
-            Console.ReadKey();
-
-            loopcheck = 100;
-            do
-            {
-                Console.WriteLine(loopcheck);
-                loopcheck++;
-            } while (loopcheck < 10);
-
-            Console.WriteLine("als het goed is staat hier nu alleen 100");
-
-            Console.WriteLine();
-            Console.ReadKey();
-
-            loopcheck = 0;
-
-            Console.WriteLine("geef een maximum voor de volgende loop op");
-            double maximumLoop = Double.Parse(Console.ReadLine());
-
-            for (loopcheck = 0; loopcheck < maximumLoop; loopcheck = loopcheck +1)
-            {
-                if (loopcheck % 7 == 0 || loopcheck % 5 == 0 || loopcheck / 3 < 5) 
-                   continue;
-                Console.WriteLine(loopcheck);
-            }
-
-            Console.ReadKey();
-            Console.WriteLine("nu met een for loop zonder continue (dit zou alleen multiples of 7 en 5 moeten geven of als de loopcheck kleiner is dan 50 (het tegenover gestelde dus) ");
-
-            for (loopcheck = 0; loopcheck < maximumLoop; loopcheck++)
-            {
-                if (loopcheck % 7 == 0 || loopcheck % 5 == 0 || loopcheck / 3 < 5)
-                    Console.WriteLine(loopcheck);
-            }
-
-            Console.WriteLine();
-            Console.ReadKey();
-
+            
+            
 
         }
     }
